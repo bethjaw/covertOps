@@ -1,0 +1,8 @@
+- as a user, I need a main home/landing page that lets me know where I am
+- as a user I need a way to login or create a new account
+- as a user I would like to see buttons to login or create account
+- as a user I need a page to enter new secrets
+- as a user I want to be able to see who else knows about this secret
+- as a user I need a way to log out
+- as a user I want to be able to navigate to the main page at any time
+- as a user I can see all my secrets 
