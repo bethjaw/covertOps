@@ -5,8 +5,8 @@ ul {
   flex-direction: row;
 }
 
-.mainLink {
- font-size: 24px;
+li {
+ padding-right: 25px;
 }
 
 .welcome {
@@ -37,4 +37,15 @@ ul {
   display: flex;
   flex-direction: column;
   margin: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.secretForm {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
 }
