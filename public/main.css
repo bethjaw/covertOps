@@ -16,3 +16,25 @@ ul {
   align-items: center;
   height: 500px;
 }
+
+.formsMain {
+    display: flex;
+    justify-content: center;
+}
+
+
+.forms {
+  /*border: 2px solid black;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 400px;
+}
+
+.login, .createAcct {
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+}
