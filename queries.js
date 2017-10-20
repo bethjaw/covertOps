@@ -6,7 +6,6 @@ function createUser(user) {
 
   user.code = code
   return db('users').insert(user).returning(['id', 'code'])
-  alert('id', 'code')
 }
 
 function generateRandomString(){

@@ -15,17 +15,21 @@
 
 <div class='formsMain'>
     <div class='forms'>
-        <form class='createAcct'>
+        <form id='createAcct' action='/api/users' method='post'>
           <h3>Create an Account</h3>
           <label>Email</label>
-          <input type='text' value=''>
+          <input type='text' name='email' value=''>
           <button type='submit'>Create Account</button>
         </form>
 
-        <form class='login'>
+        <script>
+
+        </script>
+
+        <form class='login' action='/api/users' method='post'>
           <h3>Log In </h3>
           <label>Enter Your Code</label>
-          <input type='text' value=''>
+          <input type='text' name='code' value=''>
           <button type='submit'>Log In</button>
         </form>
     </div>

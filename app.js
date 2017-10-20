@@ -5,6 +5,7 @@ var port = process.env.PORT || 3000
 
 const user = require('./routes/users')
 const secret = require('./routes/secrets')
+const query = require('./queries')
 
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
@@ -32,6 +33,14 @@ app.get('/login.hbs', (req,res) => {
   })
 })
 
+app.post('api/users', (req,res) => {
+  db.createUser(req.body)
+  .then(function(user){
+    res.status(201).json()  
+  })
+  .catch(err => res.status(500).send(err))
+})
+
 app.get('/userIn.hbs', (req,res) => {
   res.render('userIn')
 })
@@ -39,8 +48,6 @@ app.get('/userIn.hbs', (req,res) => {
 app.get('/addSecret.hbs', (req,res) => {
   res.render('addSecret')
 })
-
-
 
 app.listen(port, (req,res) => {
   console.log('listening!!')

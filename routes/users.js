@@ -7,6 +7,7 @@ router.post('/', (req, res) => {
   queries.createUser(req.body)
   .then(function(user){
     res.json(user)
+    // res.redirect('/userIn.hbs')
   })
 })
 
