@@ -8,17 +8,17 @@
 
     <header>
       <nav>
-          <h4><a href='index.hbs'>CO | covertOps</a></h4>
+          <h4><a href='/'>CO | covertOps</a></h4>
         <ul>
-          <li>Logged in as NAME</li>
-          <li>Add Secret</li>
+          <a><li>Logged in as {{currentUser.username}}</li></a>
+          <a href='/addSecret'><li>Add Secret</li></a>
           <li>Log Out</li>
         </ul>
       </nav>
     </header>
 
     <div>
-      <h4>Your Code:{{code}}</h4>
+      <h4>Your Code:{{currentUser.code}} </h4>
     </div>
 
 

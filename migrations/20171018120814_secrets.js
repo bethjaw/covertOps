@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('secrets', (table) => {
-      table.increments().primary()
+      table.increments()
       table.string('secret')
     })
   ])

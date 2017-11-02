@@ -2,36 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Create or Log In</title>
+    <title>{{title}}</title>
     <link rel='stylesheet' href='main.css'>
   </head>
   <body>
 
     <header>
       <nav>
-          <h4><a href='index.hbs'>CO | covertOps</a></h4>
+          <h4><a href='/'>CO | covertOps</a></h4>
       </nav>
     </header>
 
 <div class='formsMain'>
     <div class='forms'>
-        <form id='createAcct' action='/api/users' method='post'>
+
+
+        <form class='createAcct' action='/:login' method='post'>
           <h3>Create an Account</h3>
+          <p>After creating an account you will see a code - save this!  This is your code to login.</p>
+          <label>Username</label>
+            <input type='text' name='username' value=''>
           <label>Email</label>
-          <input type='text' name='email' value=''>
+            <input type='text' name='email' value=''>
           <button type='submit'>Create Account</button>
+
+            <span class='code'>{{code}}</span>
         </form>
 
-        <script>
 
-        </script>
 
-        <form class='login' action='/api/users' method='post'>
+        <form class='login' action='/login/user' method='post'>
           <h3>Log In </h3>
+          <label>Username</label>
+            <input type='text' name='username' value=''>
           <label>Enter Your Code</label>
-          <input type='text' name='code' value=''>
+            <input type='text' name='code' value=''>
           <button type='submit'>Log In</button>
         </form>
+
     </div>
   </div>
 

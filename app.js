@@ -12,8 +12,8 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use('/api/users', user)
-app.use('/api/secrets', secret)
+let loggedIn = false
+let currentUser = ''
 
 app.get('/', (req,res) => {
   res.render('index', {
@@ -21,32 +21,55 @@ app.get('/', (req,res) => {
   })
 })
 
-app.get('/', (req,res) => {
-  res.render('index', {
-    title: 'Secrets, Secrets are no fun'
-  })
-})
 
-app.get('/login.hbs', (req,res) => {
+app.get('/login', (req,res) => {
   res.render('login', {
     title: 'Create Account or Log In'
   })
 })
 
-app.post('api/users', (req,res) => {
-  db.createUser(req.body)
-  .then(function(user){
-    res.status(201).json()  
+app.post('/:login', (req,res) => {
+  query.createUser(req.body)
+  .then(function(code){
+    // res.send(code)
+    res.render('login', {
+      code: code
+    })
   })
   .catch(err => res.status(500).send(err))
 })
 
-app.get('/userIn.hbs', (req,res) => {
-  res.render('userIn')
+app.post('/login/user', (req, res) => {
+  const username = req.body.username
+  const code = req.body.code
+  query.login(username)
+  .then(userInfo => {
+    if(userInfo[0].code == code){
+      loggedIn = true
+      currentUser = userInfo[0]
+      res.redirect('/userIn')
+    }
+    else {
+      res.sendStatus(401)
+    }
+  })
+  .catch(err => {
+    res.sendStatus(500)
+  })
 })
 
-app.get('/addSecret.hbs', (req,res) => {
-  res.render('addSecret')
+
+app.get('/userIn', (req,res) => {
+  res.render('userIn', {
+    currentUser: currentUser
+  })
+})
+
+app.get('/addSecret', (req,res) => {
+  res.render('addSecret', {
+    currentUser: currentUser
+
+  })
 })
 
 app.listen(port, (req,res) => {
